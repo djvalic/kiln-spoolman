@@ -24,21 +24,23 @@ plugin, with one active spool chosen by hand.
 
 ## 2. Install the plugin
 
-Over SSH on the printer:
+On the printer's touch screen: **Settings > Plugins**, then **Install**
+next to **Spoolman**. Or in the console (Fluidd or HelixScreen):
+
+    INSTALL_PLUGIN NAME=spoolman ENABLE=1
+
+That clones it into `/data/ad5x/plugins/spoolman` and switches it on;
+Klipper and Moonraker restart by themselves (Kiln OS v0.0.7 or newer).
+Updates: Fluidd > Settings > Software Updates, the screen's **Update**
+button, or `UPDATE_PLUGIN NAME=spoolman`. Removing it: the screen's
+**Remove**, or `REMOVE_PLUGIN NAME=spoolman`.
+
+On Kiln OS v0.0.6, by hand over SSH:
 
     cd /data/ad5x/plugins
     su klipper -s /bin/sh -c 'git clone https://github.com/djvalic/kiln-spoolman.git spoolman'
 
-Then in the console (Fluidd or HelixScreen):
-
-    ENABLE_PLUGIN NAME=spoolman
-
-and reboot once, so Moonraker picks up the plugin's update entry. Fluidd
-then lists **spoolman** under Settings > Software Updates; after an update,
-run `RESTART`.
-
-Removing it: `DISABLE_PLUGIN NAME=spoolman`, then delete
-`/data/ad5x/plugins/spoolman`.
+then `ENABLE_PLUGIN NAME=spoolman` and reboot once.
 
 ## 3. Tell it which spool is in which slot
 
